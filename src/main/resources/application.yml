@@ -1,0 +1,42 @@
+server:
+  servlet:
+    context-path: /api
+  port: 8080
+  error:
+    include-message: always
+
+spring:
+  datasource:
+    driverClassName: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/latihandocker
+    username: postgres
+    password: rahasia
+    pool-size: 30
+    type: com.zaxxer.hikari.HikariDataSource
+
+  #Hibernate Config
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    properties:
+      hibernate:
+        default_schema: public
+        enable_lazy_load_no_trans: true
+        format_sql: true
+        # Hibernate (create, create-drop, validate, update)
+        ddl-auto: create-drop
+    show-sql: false
+
+  # Flyway Config
+#  flyway:
+#    baselineOnMigrate: true
+#    check-location: true
+#    locations: classpath:db/migration
+#    schemas: public
+#    enabled: false
+
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: DEBUG
+        type: TRACE
