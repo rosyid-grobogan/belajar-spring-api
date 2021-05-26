@@ -1,9 +1,12 @@
 package com.rosyidgrobogan.belajarspringapi.controllers;
 
 import com.rosyidgrobogan.belajarspringapi.models.enities.Product;
+import com.rosyidgrobogan.belajarspringapi.repositories.ProductRepository;
 import com.rosyidgrobogan.belajarspringapi.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/v1/products")
@@ -11,9 +14,12 @@ public class ProductController {
 
     private final ProductService productService;
 
+    private final ProductRepository productRepo;
+
     @Autowired
-    public ProductController(ProductService productService) {
+    public ProductController(ProductService productService, ProductRepository productRepo) {
         this.productService = productService;
+        this.productRepo = productRepo;
     }
 
     @PostMapping
@@ -28,6 +34,10 @@ public class ProductController {
 
     @GetMapping("{id}")
     public Product findOne(@PathVariable("id") Long id) {
+        Optional<Product> product = productRepo.findById(id);
+        if (!product.isPresent()) {
+            return null;
+        }
         return productService.findOne(id);
     }
 
@@ -38,6 +48,9 @@ public class ProductController {
 
     @DeleteMapping("/{id}")
     public void delete(@PathVariable("id") Long id) {
-        productService.removeOne(id);
+        Boolean product = productRepo.existsById(id);
+        if (product) {
+            productService.removeOne(id);
+        }
     }
 }
