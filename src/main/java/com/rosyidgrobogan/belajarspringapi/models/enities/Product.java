@@ -27,4 +27,6 @@ public class Product implements Serializable {
 
     private double price;
 
+    @ManyToOne
+    private Category category;
 }
