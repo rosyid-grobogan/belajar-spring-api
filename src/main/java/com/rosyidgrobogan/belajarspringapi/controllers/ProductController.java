@@ -2,7 +2,7 @@ package com.rosyidgrobogan.belajarspringapi.controllers;
 
 import com.rosyidgrobogan.belajarspringapi.dto.ResponseData;
 import com.rosyidgrobogan.belajarspringapi.models.enities.Product;
-import com.rosyidgrobogan.belajarspringapi.repositories.ProductRepository;
+import com.rosyidgrobogan.belajarspringapi.models.repositories.ProductRepository;
 import com.rosyidgrobogan.belajarspringapi.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

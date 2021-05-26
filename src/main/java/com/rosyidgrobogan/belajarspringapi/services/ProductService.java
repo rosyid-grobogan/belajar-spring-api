@@ -1,7 +1,7 @@
 package com.rosyidgrobogan.belajarspringapi.services;
 
 import com.rosyidgrobogan.belajarspringapi.models.enities.Product;
-import com.rosyidgrobogan.belajarspringapi.repositories.ProductRepository;
+import com.rosyidgrobogan.belajarspringapi.models.repositories.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

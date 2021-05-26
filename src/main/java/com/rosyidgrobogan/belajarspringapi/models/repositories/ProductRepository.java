@@ -1,4 +1,4 @@
-package com.rosyidgrobogan.belajarspringapi.repositories;
+package com.rosyidgrobogan.belajarspringapi.models.repositories;
 
 import com.rosyidgrobogan.belajarspringapi.models.enities.Product;
 import org.springframework.data.repository.CrudRepository;
