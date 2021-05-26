@@ -18,7 +18,7 @@ spring:
 
     hibernate:
       # Hibernate (create, create-drop, validate, update, none)
-      ddl-auto: create-drop
+      ddl-auto: update
 
 
 server:
