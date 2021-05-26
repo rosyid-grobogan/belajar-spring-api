@@ -1,0 +1,8 @@
+POST http://localhost:8182/api/v1/products
+Content-Type: application/json
+
+{
+  "name": "Kemeja",
+  "description" : "bahan lembut",
+  "price" :	75000
+}
