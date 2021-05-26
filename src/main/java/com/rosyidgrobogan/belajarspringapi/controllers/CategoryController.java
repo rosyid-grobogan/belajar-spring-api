@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping
+@RequestMapping("/v1/categories")
 public class CategoryController {
 
     private final CategoryService categoryService;
@@ -28,6 +28,7 @@ public class CategoryController {
         this.modelMapper = modelMapper;
     }
 
+    @PostMapping
     public ResponseEntity<ResponseData<Category>> create(
             @RequestBody @Valid CategoryData categoryData,
             Errors errors)
@@ -87,5 +88,10 @@ public class CategoryController {
         responseData.setPayload(categoryService.save(category));
 
         return ResponseEntity.ok(responseData);
+    }
+
+    @DeleteMapping("/{id}")
+    public void removeOne(@PathVariable("id") Long id){
+        categoryService.removeOne(id);
     }
 }
