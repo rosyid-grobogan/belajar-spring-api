@@ -10,6 +10,6 @@ public class Welcome {
 
     @GetMapping
     public String welcome() {
-        return "Selamat Datang";
+        return "Selamat Datang Java Spring";
     }
 }
