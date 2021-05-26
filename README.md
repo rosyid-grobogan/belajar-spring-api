@@ -14,11 +14,19 @@ examples. `getProduct.rest`.
 ## Penerapan Relationship
 - 1 category bisa dimiliki banyak product
 - 1 product hanya punya 1 category
-### Relasi di sisi category, One to Many.
+### Relasi di sisi category, ONE TO MANY.
 Masalahnya, akan me-load semua category, jika ada 100 category maka semuanya akan di-load.
 
-### Relasinya bisa di sisi product, jadi Many to One.
+### Relasinya bisa di sisi product, jadi MANY TO ONE.
 Keuntungannya, jika category akan di load berdasarkan product.
 
 ### Bagaimana, jika kita ingin mencari product dengan category tertentu?
 Itu bisa dilakukan pada manipulasi di bagian repository
+
+### Relasi Supler
+- 1 Supler bisa menyuplai lebih dari 1 product
+- Sehingga hubungan supler ke product adalah MANY TO MANY
+
+Kasus lain, Mahasiswa dan Mata Kuliah
+- mahasiswa bisa mengambil lebih dari 1 mata kuliah
+- 1 mata kuliah bisa diikuti lebih dari 1 mahasiswa
