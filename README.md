@@ -38,7 +38,7 @@ localhost:8182/api/v2/api-docs
 ```
 
 ### Swagger UI
-swagger UI akan digenerate di web dan langsung bisa kita akses
+swagger UI akan digenerate di web dan langsung bisa kita akses.
 ```
 http://localhost:8182/api/swagger-ui/
 ```
