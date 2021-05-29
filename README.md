@@ -30,3 +30,9 @@ Itu bisa dilakukan pada manipulasi di bagian repository
 Kasus lain, Mahasiswa dan Mata Kuliah
 - mahasiswa bisa mengambil lebih dari 1 mata kuliah
 - 1 mata kuliah bisa diikuti lebih dari 1 mahasiswa
+
+## Swagger
+test apakah configurasinya sudah berjalan
+```
+localhost:8182/api/v2/api-docs
+```
