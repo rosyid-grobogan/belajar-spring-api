@@ -1,6 +1,7 @@
 package com.rosyidgrobogan.belajarspringapi.controllers;
 
 import com.rosyidgrobogan.belajarspringapi.dto.ResponseData;
+import com.rosyidgrobogan.belajarspringapi.dto.SearchData;
 import com.rosyidgrobogan.belajarspringapi.dto.SupplierData;
 import com.rosyidgrobogan.belajarspringapi.models.enities.Product;
 import com.rosyidgrobogan.belajarspringapi.models.enities.Supplier;
@@ -15,6 +16,7 @@ import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -91,5 +93,15 @@ public class ProductController {
             @PathVariable("id") Long productId)
     {
         productService.addSupplier(supplier, productId);
+    }
+
+    @PostMapping("/search/name")
+    public Product getProductByName(@RequestBody SearchData searchData){
+        return productService.findByProductName(searchData.getSearchKey());
+    }
+
+    @PostMapping("/search/nameLike")
+    public List<Product> getProductByNameLike(@RequestBody SearchData searchData){
+        return productService.findByProductNameLike(searchData.getSearchKey());
     }
 }

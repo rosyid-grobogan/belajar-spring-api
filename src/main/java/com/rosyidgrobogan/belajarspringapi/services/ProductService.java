@@ -55,6 +55,14 @@ public class ProductService {
         product.getSuppliers().add(supplier);
 
         save(product);
-        long berapa = 5L;
+//        long berapa = 5L;
+    }
+
+    public Product findByProductName(String name) {
+        return productRepo.findProductByName(name);
+    }
+
+    public List<Product> findByProductNameLike(String name) {
+        return productRepo.findProductByNameLike("%"+name+"%");
     }
 }
