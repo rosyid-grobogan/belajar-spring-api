@@ -65,4 +65,8 @@ public class ProductService {
     public List<Product> findByProductNameLike(String name) {
         return productRepo.findProductByNameLike("%"+name+"%");
     }
+
+    public List<Product> findByCategoryId(Long categoryId){
+        return productRepo.findProductByCategory(categoryId);
+    }
 }

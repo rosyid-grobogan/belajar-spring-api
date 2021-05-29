@@ -104,4 +104,9 @@ public class ProductController {
     public List<Product> getProductByNameLike(@RequestBody SearchData searchData){
         return productService.findByProductNameLike(searchData.getSearchKey());
     }
+
+    @GetMapping("/search/category/{categoryId}")
+    public List<Product> getProductByCategoryId(@PathVariable("categoryId") Long categoryId) {
+        return productService.findByCategoryId(categoryId);
+    }
 }
