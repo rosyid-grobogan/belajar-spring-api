@@ -1,6 +1,7 @@
 package com.rosyidgrobogan.belajarspringapi.controllers;
 
 import com.rosyidgrobogan.belajarspringapi.dto.ResponseData;
+import com.rosyidgrobogan.belajarspringapi.dto.SearchData;
 import com.rosyidgrobogan.belajarspringapi.dto.SupplierData;
 import com.rosyidgrobogan.belajarspringapi.helpers.ModelMapperHelper;
 import com.rosyidgrobogan.belajarspringapi.models.enities.Supplier;
@@ -98,5 +99,10 @@ public class SupplierController {
         responseData.setPayload(supplierService.save(supplier));
 
         return ResponseEntity.ok(responseData);
+    }
+
+    @PostMapping("/search/byemail")
+    public Supplier findByEmail(@RequestBody SearchData searchData){
+        return supplierService.findByEmail(searchData.getSearchKey());
     }
 }

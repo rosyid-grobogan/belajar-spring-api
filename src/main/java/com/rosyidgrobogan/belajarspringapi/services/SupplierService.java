@@ -38,4 +38,8 @@ public class SupplierService {
     public void removeOne(Long id){
         supplierRepo.deleteById(id);
     }
+
+    public Supplier findByEmail(String email) {
+        return supplierRepo.findByEmail(email);
+    }
 }
