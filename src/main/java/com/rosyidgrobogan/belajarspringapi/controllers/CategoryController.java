@@ -17,6 +17,7 @@ import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Arrays;
 
 @RestController
 @RequestMapping("/v1/categories")
@@ -124,4 +125,13 @@ public class CategoryController {
         return categoryService.findByName(searchData.getSearchKey(), pageable);
     }
 
+    @PostMapping("/saveall")
+    public ResponseEntity<ResponseData<Iterable<Category>>> createBatch(@RequestBody Category[] categories) {
+        ResponseData<Iterable<Category>> responseData = new ResponseData<>();
+        // Casting ke array ke iterable
+        responseData.setPayload(categoryService.saveBatch(Arrays.asList(categories)));
+        responseData.setStatus(true);
+
+        return ResponseEntity.ok(responseData);
+    }
 }

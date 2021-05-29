@@ -43,4 +43,8 @@ public class CategoryService {
     public Iterable<Category> findByName(String name, Pageable pageable) {
         return categoryRepo.findByNameContains(name, pageable);
     }
+
+    public Iterable<Category> saveBatch(Iterable<Category> categories) {
+        return categoryRepo.saveAll(categories);
+    }
 }
