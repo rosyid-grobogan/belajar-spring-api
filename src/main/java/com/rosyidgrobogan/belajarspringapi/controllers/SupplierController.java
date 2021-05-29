@@ -24,7 +24,10 @@ public class SupplierController {
     private final ModelMapper modelMapper;
 
     @Autowired
-    public SupplierController(SupplierService supplierService, ModelMapper modelMapper) {
+    public SupplierController(
+            SupplierService supplierService,
+            ModelMapper modelMapper)
+    {
         this.supplierService = supplierService;
         this.modelMapper = modelMapper;
     }

@@ -1,12 +1,15 @@
 package com.rosyidgrobogan.belajarspringapi.services;
 
 import com.rosyidgrobogan.belajarspringapi.models.enities.Product;
+import com.rosyidgrobogan.belajarspringapi.models.enities.Supplier;
 import com.rosyidgrobogan.belajarspringapi.models.repositories.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 
 @Service
 @Transactional
@@ -24,7 +27,11 @@ public class ProductService {
     }
 
     public Product findOne(Long id) {
-        return productRepo.findById(id).get();
+        Optional<Product> product = productRepo.findById(id);
+        if (!product.isPresent()){
+            return null;
+        }
+        return product.get();
     }
 
     public Iterable<Product> findAll() {
@@ -37,5 +44,17 @@ public class ProductService {
 
     public List<Product> findByName(String name) {
         return productRepo.findByNameContains(name);
+    }
+
+    // supplier
+    public void addSupplier(Supplier supplier, Long productId){
+        Product product = findOne(productId);
+        if (product == null){
+          throw new RuntimeException("Product with ID "+ productId + " not found");
+        }
+        product.getSuppliers().add(supplier);
+
+        save(product);
+        long berapa = 5L;
     }
 }

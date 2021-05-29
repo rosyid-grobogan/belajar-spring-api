@@ -1,14 +1,23 @@
 package com.rosyidgrobogan.belajarspringapi.models.enities;
 
-import lombok.Data;
+import com.fasterxml.jackson.annotation.*;
+import lombok.*;
+import lombok.experimental.FieldNameConstants;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Set;
 
+@NoArgsConstructor
+@AllArgsConstructor
 @Data
 @Entity
 @Table(name = "suppliers")
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "id"
+)
 public class Supplier implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -27,5 +36,9 @@ public class Supplier implements Serializable {
     private String email;
 
     @ManyToMany(mappedBy = "suppliers")
+//    @JsonBackReference
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    @FieldNameConstants.Exclude
     private Set<Product> products;
 }

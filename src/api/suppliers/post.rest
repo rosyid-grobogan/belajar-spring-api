@@ -2,7 +2,7 @@ POST http://localhost:8182/api/v1/suppliers
 Content-Type: application/json
 
 {
-  "name": "Tegar",
+  "name": "Tegar 3",
   "address": "Ambon",
-  "email": "tegar@test.com"
+  "email": "tegar3@test.com"
 }
