@@ -7,4 +7,5 @@ public class SearchData {
 
     private String searchKey;
 
+    private String otherSearchKey;
 }

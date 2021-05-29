@@ -17,4 +17,7 @@ public interface SupplierRepository extends CrudRepository<Supplier, Long> {
 
     // dicari dimulai dari awal
     List<Supplier> findByNameStartingWith(String name);
+
+    // multi: berdasarkan nama atau email
+    List<Supplier> findByNameContainsOrEmailContains(String name, String email);
 }
