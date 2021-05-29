@@ -12,6 +12,9 @@ public interface SupplierRepository extends CrudRepository<Supplier, Long> {
     // supplier berdasarkan email
     Supplier findByEmail(String email);
 
-    // mirip LIKE
+    // mirip LIKE (cek di awal, tengah, akhiran)
     List<Supplier> findByNameContains(String name);
+
+    // dicari dimulai dari awal
+    List<Supplier> findByNameStartingWith(String name);
 }

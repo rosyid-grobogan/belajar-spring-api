@@ -48,4 +48,7 @@ public class SupplierService {
         return supplierRepo.findByNameContains(name);
     }
 
+    public List<Supplier> findByNameStartWith(String prefix) {
+        return supplierRepo.findByNameStartingWith(prefix);
+    }
 }
