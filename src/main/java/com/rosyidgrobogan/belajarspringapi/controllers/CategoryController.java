@@ -2,10 +2,13 @@ package com.rosyidgrobogan.belajarspringapi.controllers;
 
 import com.rosyidgrobogan.belajarspringapi.dto.CategoryData;
 import com.rosyidgrobogan.belajarspringapi.dto.ResponseData;
+import com.rosyidgrobogan.belajarspringapi.dto.SearchData;
 import com.rosyidgrobogan.belajarspringapi.models.enities.Category;
 import com.rosyidgrobogan.belajarspringapi.services.CategoryService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.Errors;
@@ -94,4 +97,15 @@ public class CategoryController {
     public void removeOne(@PathVariable("id") Long id){
         categoryService.removeOne(id);
     }
+
+    @PostMapping("/search/{size}/{page}")
+    public Iterable<Category> findByName(@RequestBody SearchData searchData,
+                                         @PathVariable("size") int size,
+                                         @PathVariable("page") int page
+    )
+    {
+        Pageable pageable = PageRequest.of(page, size);
+        return categoryService.findByName(searchData.getSearchKey(), pageable);
+    }
+
 }

@@ -3,6 +3,7 @@ package com.rosyidgrobogan.belajarspringapi.services;
 import com.rosyidgrobogan.belajarspringapi.models.enities.Category;
 import com.rosyidgrobogan.belajarspringapi.models.repositories.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -37,5 +38,9 @@ public class CategoryService {
 
     public void removeOne(Long id){
         categoryRepo.deleteById(id);
+    }
+
+    public Iterable<Category> findByName(String name, Pageable pageable) {
+        return categoryRepo.findByNameContains(name, pageable);
     }
 }
