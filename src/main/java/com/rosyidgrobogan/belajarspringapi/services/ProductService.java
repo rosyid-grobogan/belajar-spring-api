@@ -7,9 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 
 @Service
 @Transactional
@@ -17,9 +17,12 @@ public class ProductService {
 
     private final ProductRepository productRepo;
 
+    private final SupplierService supplierService;
+
     @Autowired
-    public ProductService(ProductRepository productRepo) {
+    public ProductService(ProductRepository productRepo, SupplierService supplierService) {
         this.productRepo = productRepo;
+        this.supplierService = supplierService;
     }
 
     public Product save(Product product) {
@@ -68,5 +71,14 @@ public class ProductService {
 
     public List<Product> findByCategoryId(Long categoryId){
         return productRepo.findProductByCategory(categoryId);
+    }
+
+    public List<Product> findBySupplier(Long supplierId){
+        Supplier supplier = supplierService.findOne(supplierId);
+        if (supplier == null) {
+            // kebalikan product kosong
+            return new ArrayList<Product>();
+        }
+        return productRepo.findProductBySupplier(supplier);
     }
 }
