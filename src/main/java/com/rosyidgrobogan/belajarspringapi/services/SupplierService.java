@@ -55,4 +55,8 @@ public class SupplierService {
     public List<Supplier> findByNameOrEmail(String name, String email) {
         return supplierRepo.findByNameContainsOrEmailContains(name, email);
     }
+
+    public List<Supplier> findByNameOrderByDesc(String name) {
+        return supplierRepo.findByNameContainsOrderByIdDesc(name);
+    }
 }

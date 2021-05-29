@@ -121,4 +121,9 @@ public class SupplierController {
     public List<Supplier> findByNameOrEmail(@RequestBody SearchData searchData){
         return supplierService.findByNameOrEmail(searchData.getSearchKey(), searchData.getOtherSearchKey());
     }
+
+    @PostMapping("/search/bynamedesc")
+    public List<Supplier> findByNameDesc(@RequestBody SearchData searchData){
+        return supplierService.findByNameOrderByDesc(searchData.getSearchKey());
+    }
 }

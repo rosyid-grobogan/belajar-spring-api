@@ -20,4 +20,7 @@ public interface SupplierRepository extends CrudRepository<Supplier, Long> {
 
     // multi: berdasarkan nama atau email
     List<Supplier> findByNameContainsOrEmailContains(String name, String email);
+
+    // desc: order by desc
+    List<Supplier> findByNameContainsOrderByIdDesc(String name);
 }
