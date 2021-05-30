@@ -29,7 +29,7 @@ public class UserController {
         this.modelMapper = modelMapper;
     }
 
-    @PostMapping
+    @PostMapping("/signup")
     public ResponseEntity<ResponseData<User>> register(
             @RequestBody UserData userData,
             Errors errors)
