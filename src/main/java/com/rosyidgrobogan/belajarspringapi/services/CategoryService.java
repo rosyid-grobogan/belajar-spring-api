@@ -21,6 +21,13 @@ public class CategoryService {
     }
 
     public Category save(Category category) {
+        if (category.getId() != null){
+            Category currentCategory = categoryRepo.findById(category.getId()).get();
+            currentCategory.setName(category.getName());
+            System.out.println(currentCategory.getCreatedBy());
+
+            category = currentCategory;
+        }
         return categoryRepo.save(category);
     }
 
